@@ -11,6 +11,8 @@ const StyledButton = styled.div`
   border-radius: 40px;
   box-shadow: 2px 2px 15px rgba(25, 99, 115, 0.2);
   padding-top: 3px;
+  font-size: 80%;
+  cursor: pointer;
   ${({ menubar }) =>
     menubar &&
     `

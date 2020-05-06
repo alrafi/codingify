@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import MenuBar from './MenuBar';
 import styled from 'styled-components';
-import Button from './Button';
-import '../index.css';
-import bg from '../assets/bg1.png';
-import coding from '../assets/coding.png';
+import Button from '../../components/Button';
+import bg from '../../assets/bg1.png';
+import coding from '../../assets/coding.png';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -43,14 +42,14 @@ const ImageCoding = styled.div`
   right: 140px;
 `;
 
-class App extends Component {
+class LandingPage extends Component {
   render() {
     return (
       <MainWrapper>
         <MenuBar></MenuBar>
         <Subtitle>
           Belajar pemrograman dengan konsep berpikir komputasional yang
-          interaktif.
+          interaktif by hafisalrafi.
         </Subtitle>
         <Button subtitle>MULAI</Button>
         <Background></Background>
@@ -60,4 +59,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default LandingPage;
