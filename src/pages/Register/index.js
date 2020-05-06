@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import bg from '../../assets/coding.png';
 
 const MainWrapper = styled.div`
   display: flex;
@@ -33,11 +34,6 @@ const FormInput = styled.div`
   }
 `;
 
-const InfoSection = styled.div`
-  background: #009d86;
-  width: 60%;
-`;
-
 const ButtonWrapper = styled.div`
   text-align: center;
   margin-top: 40px;
@@ -53,6 +49,30 @@ const LinkSwitch = styled.p`
   }
 `;
 
+const InfoSection = styled.div`
+  background: #009d86;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 70px;
+`;
+
+const ImageDisplay = styled.div`
+  width: 350px;
+  height: 335px;
+  background: url(${bg});
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 50px;
+`;
+
+const InfoDisplay = styled.h2`
+  font-size: 120%;
+  color: #ffffff;
+`;
+
 const Register = () => {
   return (
     <MainWrapper>
@@ -60,7 +80,7 @@ const Register = () => {
         <h1>Codingify</h1>
         <FormInput>
           <h2>Sign Up</h2>
-          <Input name="Username" placeholder="Choose username" />
+          <Input name="Username" placeholder="Choose username" focus="true" />
           <Input name="E-mail address" placeholder="you@example.com" />
           <Input name="Password" placeholder="Enter your password" />
           <ButtonWrapper>
@@ -71,7 +91,13 @@ const Register = () => {
           </LinkSwitch>
         </FormInput>
       </FormSection>
-      <InfoSection></InfoSection>
+      <InfoSection>
+        <ImageDisplay></ImageDisplay>
+        <InfoDisplay>
+          Belajar pemrograman dengan konsep berpikir komputasional yang
+          interaktif.
+        </InfoDisplay>
+      </InfoSection>
     </MainWrapper>
   );
 };

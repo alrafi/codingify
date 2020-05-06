@@ -19,11 +19,11 @@ const InputStyled = styled.div`
   }
 `;
 
-const Input = ({ name, placeholder }) => {
+const Input = ({ name, placeholder, focus }) => {
   return (
     <InputStyled>
       <p>{name}</p>
-      <input type="text" placeholder={placeholder} />
+      <input type="text" placeholder={placeholder} autoFocus={focus} />
     </InputStyled>
   );
 };
