@@ -14,6 +14,11 @@ export const FormSection = styled.div`
   display: flex;
   flex-direction: column;
 
+  .link-header {
+    text-decoration: none;
+    color: #222831;
+  }
+
   h1 {
     font-size: 160%;
     margin: 30px 0 0 30px;
@@ -41,8 +46,12 @@ export const LinkSwitch = styled.p`
   font-size: 80%;
   margin-top: 15px;
 
-  span {
+  .link {
     color: #009d86;
+    text-decoration: none;
+  }
+  .link:hover {
+    color: #007a69;
   }
 `;
 

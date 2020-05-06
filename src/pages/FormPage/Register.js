@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 import {
   MainWrapper,
   FormSection,
@@ -16,7 +17,9 @@ const Register = () => {
   return (
     <MainWrapper>
       <FormSection>
-        <h1>Codingify</h1>
+        <Link to="/" className="link-header">
+          <h1>Codingify</h1>
+        </Link>
         <FormInput>
           <h2>Sign Up</h2>
           <Input name="Username" placeholder="Choose username" focus="true" />
@@ -26,7 +29,10 @@ const Register = () => {
             <Button>Sign Up</Button>
           </ButtonWrapper>
           <LinkSwitch>
-            Already have an account? <span>Log in</span>
+            Already have an account?{' '}
+            <Link to="/login" className="link">
+              Log in
+            </Link>
           </LinkSwitch>
         </FormInput>
       </FormSection>

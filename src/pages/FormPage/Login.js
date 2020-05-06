@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 import {
   MainWrapper,
   FormSection,
@@ -16,7 +17,9 @@ const Login = () => {
   return (
     <MainWrapper>
       <FormSection>
-        <h1>Codingify</h1>
+        <Link to="/" className="link-header">
+          <h1>Codingify</h1>
+        </Link>
         <FormInput>
           <h2>Log in</h2>
           <Input
@@ -29,7 +32,10 @@ const Login = () => {
             <Button>Log in</Button>
           </ButtonWrapper>
           <LinkSwitch>
-            Don’t have an account? <span>Sign up</span>
+            Don’t have an account?{' '}
+            <Link to="/register" className="link">
+              Sign up
+            </Link>
           </LinkSwitch>
         </FormInput>
       </FormSection>

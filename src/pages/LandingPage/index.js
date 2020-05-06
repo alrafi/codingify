@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Button from '../../components/Button';
 import bg from '../../assets/bg1.png';
 import coding from '../../assets/coding.png';
+import { Link } from 'react-router-dom';
 
 const MainWrapper = styled.div`
   height: 100vh;
@@ -51,7 +52,9 @@ class LandingPage extends Component {
           Belajar pemrograman dengan konsep berpikir komputasional yang
           interaktif by hafisalrafi.
         </Subtitle>
-        <Button subtitle>MULAI</Button>
+        <Link to="/register">
+          <Button subtitle>MULAI</Button>
+        </Link>
         <Background></Background>
         <ImageCoding></ImageCoding>
       </MainWrapper>
