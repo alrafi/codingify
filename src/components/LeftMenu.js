@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../assets/codingify-logo.png';
+import Logo from './Logo';
 
 const LeftMenuStyled = styled.div`
   height: 100vh;
@@ -11,23 +11,6 @@ const LeftMenuStyled = styled.div`
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
-`;
-
-const Logo = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  margin-bottom: 100px;
-
-  img {
-    width: 25px;
-    height: 30px;
-    margin-right: 10px;
-  }
-
-  h1 {
-    font-size: 110%;
-  }
 `;
 
 const SidebarMenu = styled.div`
@@ -52,10 +35,7 @@ const MenuItem = styled.div`
 const LeftMenu = () => {
   return (
     <LeftMenuStyled>
-      <Logo>
-        <img src={logo} alt="codingify" />
-        <h1>Codingify</h1>
-      </Logo>
+      <Logo />
       <SidebarMenu>
         <MenuItem>
           <p>Dashboard</p>
