@@ -3,6 +3,55 @@ import styled from 'styled-components';
 import logo from '../../assets/codingify-logo.png';
 import welcome from '../../assets/welcome.png';
 
+import RankTable from './RankTable';
+import LearnItem from './LearnItem';
+
+const allTimeTable = [
+  {
+    id: 1,
+    name: 'bryanmax',
+    points: 197,
+  },
+  {
+    id: 2,
+    name: 'alrafi',
+    points: 112,
+  },
+  {
+    id: 3,
+    name: 'star97',
+    points: 83,
+  },
+  {
+    id: 4,
+    name: 'merahputih',
+    points: 77,
+  },
+];
+
+const pekanIniTable = [
+  {
+    id: 1,
+    name: 'martinwhite',
+    points: '+28',
+  },
+  {
+    id: 2,
+    name: 'ujanglagi4',
+    points: '+21',
+  },
+  {
+    id: 3,
+    name: 'pakdangklek',
+    points: '+17',
+  },
+  {
+    id: 4,
+    name: 'tuanvin12',
+    points: '+14',
+  },
+];
+
 const MainWrapper = styled.div`
   background-color: #f6f4fc;
   position: relative;
@@ -10,7 +59,7 @@ const MainWrapper = styled.div`
 
 const LeftMenu = styled.div`
   height: 100vh;
-  width: 300px;
+  width: 15%;
   background-color: #fff;
   position: fixed;
   left: 0;
@@ -21,7 +70,7 @@ const LeftMenu = styled.div`
 
 const RightMenu = styled.div`
   height: 100vh;
-  width: 400px;
+  width: 25%;
   background-color: #fff;
   position: fixed;
   right: 0;
@@ -31,16 +80,10 @@ const RightMenu = styled.div`
 `;
 
 const MainContent = styled.div`
-  height: 120vh;
-  /* width: 40%; */
-  /* background-color: green; */
-  border: 1px solid #000;
   position: absolute;
-  left: 25%;
-  right: 32%;
+  left: 18%;
+  right: 28%;
   padding-top: 20px;
-
-  /* right: 0; */
 
   h2 {
     font-size: 100%;
@@ -68,12 +111,11 @@ const Logo = styled.div`
 const SidebarMenu = styled.div`
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 200px; */
 `;
 
 const MenuItem = styled.div`
   background-color: #dbf6f6;
-  margin-left: 50px;
+  margin-left: 25px;
   height: 40px;
   margin-bottom: 30px;
   padding: 10px 0 0 20px;
@@ -101,6 +143,7 @@ const WelcomeSection = styled.div`
 const WelcomeText = styled.div`
   margin-left: 10px;
   padding-top: 20px;
+  width: 70%;
 `;
 
 const Greeting = styled.p`
@@ -114,13 +157,56 @@ const LastTopic = styled.p`
   font-weight: normal;
   font-size: 70%;
   color: #3d3d3d;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 const LearnNow = styled.p`
   font-size: 70%;
   color: #3d3d3d;
   text-align: right;
+`;
+
+const InfoSection = styled.div`
+  display: flex;
+  margin-top: 30px;
+`;
+
+const LearnSection = styled.div`
+  width: 60%;
+  background-color: #fff;
+  margin-right: 20px;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+
+  p {
+    margin-bottom: 20px;
+  }
+`;
+
+const ShowAll = styled.p`
+  text-align: right;
+  font-size: 60%;
+`;
+
+// LEADERBOARD SECTION
+const LeaderboardSection = styled.div`
+  width: 40%;
+  background-color: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+`;
+
+const LeaderboardTitle = styled.p`
+  margin-bottom: 20px;
+`;
+
+const RankName = styled.p`
+  font-size: 80%;
+  margin-bottom: 10px;
+`;
+
+const RankWrapper = styled.div`
+  margin-bottom: 20px;
 `;
 
 const Home = () => {
@@ -162,6 +248,44 @@ const Home = () => {
             <LearnNow>Pelajari Sekarang</LearnNow>
           </WelcomeText>
         </WelcomeSection>
+        <InfoSection>
+          <LearnSection>
+            <p>Learn</p>
+            <LearnItem idName="Percabangan" enName="Conditional" />
+            <LearnItem idName="Perulangan" enName="Looping" />
+            <LearnItem idName="Array" enName="Array" />
+            <ShowAll>Lihat semua</ShowAll>
+          </LearnSection>
+          <LeaderboardSection>
+            <LeaderboardTitle>Leaderboard</LeaderboardTitle>
+            <RankWrapper>
+              <RankName>Top all-time</RankName>
+              {allTimeTable.map((item) => {
+                return (
+                  <RankTable
+                    id={item.id}
+                    name={item.name}
+                    points={item.points}
+                  />
+                );
+              })}
+              <ShowAll>Lihat semua</ShowAll>
+            </RankWrapper>
+            <RankWrapper>
+              <RankName>Pekan ini</RankName>
+              {pekanIniTable.map((item) => {
+                return (
+                  <RankTable
+                    id={item.id}
+                    name={item.name}
+                    points={item.points}
+                  />
+                );
+              })}
+              <ShowAll>Lihat semua</ShowAll>
+            </RankWrapper>
+          </LeaderboardSection>
+        </InfoSection>
       </MainContent>
     </MainWrapper>
   );
