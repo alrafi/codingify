@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from '../../components/Logo';
+import video from '../../assets/video.mp4';
 
 import AceEditor from 'react-ace';
+import { Player } from 'video-react';
 
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
@@ -81,6 +83,32 @@ const Text = styled.p`
   margin-bottom: 10px;
 `;
 
+const CodeBox = styled.div`
+  background-color: #f5f6f7;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 10px;
+`;
+
+const CodeText = styled.p`
+  font-family: 'Fira Code', monospace;
+  font-size: 70%;
+`;
+
+const TextHighlight = styled.p`
+  font-family: 'Fira Code', monospace;
+  font-size: 90%;
+  background-color: #d0d0d5;
+  display: inline;
+`;
+
+const SubTitle = styled.p`
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 80%;
+  margin-top: 10px;
+`;
+
 const onChange = (newValue) => {
   console.log('change', newValue);
 };
@@ -105,6 +133,36 @@ const Learn = () => {
         <Text>
           Karena array merupakan variabel, diperlukan deklarasi seperti variabel
           lainnya.
+        </Text>
+        <Text>Berikut contoh deklarasi dan pengisian nilai array:</Text>
+        <CodeBox>
+          <CodeText>let arr = [];</CodeText>
+          <CodeText>arr[0] = ‘pisang’;</CodeText>
+          <CodeText>arr[1] = ‘semangka’;</CodeText>
+        </CodeBox>
+        <Text>
+          Pada contoh di atas, sebuah array bernama{' '}
+          <TextHighlight>arr</TextHighlight> dideklarasikan. Kemudian elemen
+          array indeks-0 diisi dengan <TextHighlight>pisang</TextHighlight>.
+          Kemudian elemen array indeks-1 diisi dengan{' '}
+          <TextHighlight>semangka</TextHighlight>.
+        </Text>
+        <SubTitle>Belajar Konsep</SubTitle>
+        <Text>
+          Untuk mengenal konsep array lebih jelas, silahkan menonton video
+          perkenalan array di bawah ini.
+        </Text>
+        <Player>
+          {/* // playsInline
+          // poster="/assets/poster.png" */}
+          <source src={video} />
+        </Player>
+        <SubTitle>Latihan Konsep</SubTitle>
+        <Text>
+          Modifikasi array dengan nama <TextHighlight>myArr</TextHighlight>{' '}
+          dengan memasukkan nilai <TextHighlight>gajah</TextHighlight> untuk
+          elemen pertama dan nilai <TextHighlight>45</TextHighlight> untuk
+          elemen kedua.{' '}
         </Text>
       </ConceptSection>
       <CodeSection>
