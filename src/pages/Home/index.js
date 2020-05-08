@@ -1,10 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../assets/codingify-logo.png';
-import welcome from '../../assets/welcome.png';
 
 import RankTable from './RankTable';
 import LearnItem from './LearnItem';
+import LeftMenu from '../../components/LeftMenu';
+import WelcomeSection from './WelcomeSection';
+
+import avatar from '../../assets/avatar.png';
+import notif from '../../assets/notif.png';
+import user from '../../assets/user.png';
+import downArrow from '../../assets/down-arrow.png';
+import Button from '../../components/Button';
 
 const allTimeTable = [
   {
@@ -57,28 +63,6 @@ const MainWrapper = styled.div`
   position: relative;
 `;
 
-const LeftMenu = styled.div`
-  height: 100vh;
-  width: 15%;
-  background-color: #fff;
-  position: fixed;
-  left: 0;
-  border-top-right-radius: 40px;
-  border-bottom-right-radius: 40px;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
-`;
-
-const RightMenu = styled.div`
-  height: 100vh;
-  width: 25%;
-  background-color: #fff;
-  position: fixed;
-  right: 0;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
-`;
-
 const MainContent = styled.div`
   position: absolute;
   left: 18%;
@@ -91,81 +75,7 @@ const MainContent = styled.div`
   }
 `;
 
-const Logo = styled.div`
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  margin-bottom: 100px;
-
-  img {
-    width: 25px;
-    height: 30px;
-    margin-right: 10px;
-  }
-
-  h1 {
-    font-size: 110%;
-  }
-`;
-
-const SidebarMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const MenuItem = styled.div`
-  background-color: #dbf6f6;
-  margin-left: 25px;
-  height: 40px;
-  margin-bottom: 30px;
-  padding: 10px 0 0 20px;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
-
-  p {
-    font-size: 80%;
-  }
-`;
-
-const WelcomeSection = styled.div`
-  width: 100%;
-  height: 120px;
-  background-color: #dbf6f6;
-  border-radius: 20px;
-  display: flex;
-  padding-left: 20px;
-
-  img {
-    width: 160px;
-  }
-`;
-
-const WelcomeText = styled.div`
-  margin-left: 10px;
-  padding-top: 20px;
-  width: 70%;
-`;
-
-const Greeting = styled.p`
-  font-size: 120%;
-  color: #009d86;
-  font-weight: 600;
-  margin-bottom: 5px;
-`;
-
-const LastTopic = styled.p`
-  font-weight: normal;
-  font-size: 70%;
-  color: #3d3d3d;
-  margin-bottom: 10px;
-`;
-
-const LearnNow = styled.p`
-  font-size: 70%;
-  color: #3d3d3d;
-  text-align: right;
-`;
-
+// data at Dashboard
 const InfoSection = styled.div`
   display: flex;
   margin-top: 30px;
@@ -209,45 +119,178 @@ const RankWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+// RIGHT MENU
+const RightMenu = styled.div`
+  height: 100vh;
+  width: 25%;
+  background-color: #fff;
+  position: fixed;
+  right: 0;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+`;
+
+const AccountNotif = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+`;
+
+const AccountControl = styled.div`
+  display: flex;
+  padding: 0 15px;
+  justify-content: space-between;
+  align-items: center;
+  background: #009d86;
+  width: 120px;
+  box-shadow: 2px 2px 15px rgba(25, 99, 115, 0.2);
+  border-radius: 40px;
+
+  p {
+    color: #fff;
+    font-size: 90%;
+  }
+`;
+
+const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+`;
+
+const RealName = styled.p`
+  font-size: 100%;
+  font-weight: bold;
+`;
+
+const Username = styled.p`
+  font-size: 70%;
+`;
+
+const DataProfile = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const AchieveWrapper = styled.div`
+  display: flex;
+  margin-bottom: 20px;
+`;
+
+const AchieveInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 50%;
+`;
+
+const AchieveCount = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: ${({ bgColor }) => bgColor};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  p {
+    font-size: 180%;
+    color: ${({ color }) => color};
+  }
+`;
+
+const AchieveName = styled.p`
+  font-weight: bold;
+  font-size: 100%;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+`;
+
 const Home = () => {
   return (
     <MainWrapper>
-      <LeftMenu>
-        <Logo>
-          <img src={logo} alt="codingify" />
-          <h1>Codingify</h1>
-        </Logo>
-        <SidebarMenu>
-          <MenuItem>
-            <p>Dashboard</p>
-          </MenuItem>
-          <MenuItem>
-            <p>Learn</p>
-          </MenuItem>
-          <MenuItem>
-            <p>Quiz</p>
-          </MenuItem>
-          <MenuItem>
-            <p>Leaderboard</p>
-          </MenuItem>
-          <MenuItem>
-            <p>Profile</p>
-          </MenuItem>
-        </SidebarMenu>
-      </LeftMenu>
-      <RightMenu></RightMenu>
+      <LeftMenu></LeftMenu>
+      <RightMenu>
+        <AccountNotif>
+          <img
+            src={notif}
+            alt="notification"
+            style={{ width: '30px', height: '30px', marginRight: '10px' }}
+          />
+          <AccountControl>
+            <img
+              src={user}
+              alt="user"
+              style={{ width: '23px', height: '21px' }}
+            />
+            <p>alrafi</p>
+            <img
+              src={downArrow}
+              alt="open"
+              style={{ width: '14px', height: '5px' }}
+            />
+          </AccountControl>
+        </AccountNotif>
+        <ProfileInfo>
+          <img
+            src={avatar}
+            alt="avatar"
+            style={{ width: '120px', height: '120px', marginBottom: '10px' }}
+          />
+          <RealName>Hafis Alrafi</RealName>
+          <Username>@alrafi</Username>
+        </ProfileInfo>
+        <DataProfile>
+          <AchieveWrapper>
+            <AchieveInfo>
+              <AchieveCount bgColor="rgba(225, 230, 12, 0.2)" color="#C7CA25">
+                <p>24</p>
+              </AchieveCount>
+              <AchieveName>Concept</AchieveName>
+            </AchieveInfo>
+            <AchieveInfo>
+              <AchieveCount bgColor="rgba(228, 92, 92, 0.3)" color="#BD3F2E">
+                <p>61</p>
+              </AchieveCount>
+              <AchieveName>Quiz Solved</AchieveName>
+            </AchieveInfo>
+          </AchieveWrapper>
+          <AchieveWrapper>
+            <AchieveInfo>
+              <AchieveCount bgColor="rgba(89, 249, 86, 0.65)" color="#399D0A">
+                <p>37</p>
+              </AchieveCount>
+              <AchieveName>Rewards</AchieveName>
+            </AchieveInfo>
+            <AchieveInfo>
+              <AchieveCount bgColor="rgba(219, 246, 246, 0.8)" color="#11D1DD">
+                <p>112</p>
+              </AchieveCount>
+              <AchieveName>Points</AchieveName>
+            </AchieveInfo>
+          </AchieveWrapper>
+        </DataProfile>
+        <ButtonWrapper>
+          <Button>Lihat Profil</Button>
+        </ButtonWrapper>
+      </RightMenu>
       <MainContent>
         <h2>Dashboard</h2>
-        <WelcomeSection>
-          <img src={welcome} alt="welcome" />
-          <WelcomeText>
-            <Greeting>Selamat datang kembali, alrafi</Greeting>
-            <LastTopic>
-              Materi terakhir yang kamu pelajari adalah Percabangan
-            </LastTopic>
-            <LearnNow>Pelajari Sekarang</LearnNow>
-          </WelcomeText>
-        </WelcomeSection>
+        <WelcomeSection></WelcomeSection>
         <InfoSection>
           <LearnSection>
             <p>Learn</p>
