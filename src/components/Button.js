@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledButton = styled.div`
   display: inline-block;
-  width: 120px;
+  width: ${({ width }) => (width ? width : '120px')};
   height: 30px;
   background-color: #009d86;
   text-align: center;
@@ -27,9 +27,14 @@ const StyledButton = styled.div`
   `}
 `;
 
-const Button = ({ menubar, subtitle, children, onClick }) => {
+const Button = ({ width, menubar, subtitle, children, onClick }) => {
   return (
-    <StyledButton menubar={menubar} subtitle={subtitle} onClick={onClick}>
+    <StyledButton
+      menubar={menubar}
+      subtitle={subtitle}
+      onClick={onClick}
+      width={width}
+    >
       {children}
     </StyledButton>
   );

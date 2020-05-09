@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Logo from '../../components/Logo';
+
 import Button from '../../components/Button';
-import AccountNotif from '../../components/AccountNotif';
+
+import MenuBar from '../../components/MenuBar';
 import video from '../../assets/video.mp4';
+import check from '../../assets/check.png';
 
 import AceEditor from 'react-ace';
 import { Player } from 'video-react';
@@ -15,19 +17,6 @@ import 'ace-builds/src-noconflict/theme-github';
 const MainWrapper = styled.div`
   background-color: #f6f4fc;
   position: relative;
-`;
-
-const MenuBar = styled.div`
-  width: 100%;
-  height: 60px;
-  background: #ffffff;
-  box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 0px 0px 30px 30px;
-  position: fixed;
-  top: 0;
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
 `;
 
 // CODE SECTION
@@ -128,12 +117,6 @@ const BoxResult = styled.div`
   height: 400px;
 `;
 
-const AccountWrapper = styled.div`
-  position: fixed;
-  top: 15px;
-  right: 20px;
-`;
-
 const onChange = (newValue) => {
   console.log('change', newValue);
 };
@@ -151,6 +134,47 @@ const customStyles = {
   },
 };
 
+const ModalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+
+  img {
+    width: 180px;
+    height: 180px;
+  }
+`;
+
+const TopicDone = styled.p`
+  font-size: 220%;
+  font-weight: bold;
+`;
+
+const TopicName = styled.p`
+  font-size: 180%;
+  margin: 10px 0;
+`;
+
+const CloseWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const ModalClose = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: #009d86;
+  border-radius: 50%;
+  font-size: 80%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
 Modal.setAppElement('#root');
 
 const Learn = () => {
@@ -165,30 +189,18 @@ const Learn = () => {
   };
 
   // MODAL
-  var subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
-  }
+  };
 
   return (
     <MainWrapper>
-      <MenuBar>
-        <Logo />
-        {/* <AccountNotif /> */}
-        <AccountWrapper>
-          <AccountNotif />
-        </AccountWrapper>
-      </MenuBar>
+      <MenuBar />
       <ConceptSection>
         <Topic>Array</Topic>
         <SubTopic>Perkenalan</SubTopic>
@@ -276,21 +288,19 @@ let myArr = [];
       </ConsoleSection>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Materi selesai"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+        <CloseWrapper>
+          <ModalClose onClick={closeModal}>X</ModalClose>
+        </CloseWrapper>
+        <ModalBox>
+          <TopicDone>Materi Selesai</TopicDone>
+          <img src={check} alt="completed" />
+          <TopicName>Array - Perkenalan</TopicName>
+          <Button width="200px">Lanjut Mengerjakan Kuis</Button>
+        </ModalBox>
       </Modal>
     </MainWrapper>
   );

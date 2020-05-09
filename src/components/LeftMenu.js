@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Logo from './Logo';
+import { Link } from 'react-router-dom';
 
 const LeftMenuStyled = styled.div`
   height: 100vh;
@@ -16,6 +17,14 @@ const LeftMenuStyled = styled.div`
 const SidebarMenu = styled.div`
   display: flex;
   flex-direction: column;
+
+  .link {
+    color: #222831;
+    text-decoration: none;
+  }
+  .link:hover {
+    color: #222831;
+  }
 `;
 
 const MenuItem = styled.div`
@@ -30,6 +39,10 @@ const MenuItem = styled.div`
   p {
     font-size: 80%;
   }
+
+  &:hover {
+    background-color: #75c6d0;
+  }
 `;
 
 const LeftMenu = () => {
@@ -37,12 +50,16 @@ const LeftMenu = () => {
     <LeftMenuStyled>
       <Logo />
       <SidebarMenu>
-        <MenuItem>
-          <p>Dashboard</p>
-        </MenuItem>
-        <MenuItem>
-          <p>Learn</p>
-        </MenuItem>
+        <Link to="/dashboard" className="link">
+          <MenuItem>
+            <p>Dashboard</p>
+          </MenuItem>
+        </Link>
+        <Link to="/learn" className="link">
+          <MenuItem>
+            <p>Learn</p>
+          </MenuItem>
+        </Link>
         <MenuItem>
           <p>Quiz</p>
         </MenuItem>
