@@ -27,9 +27,9 @@ const StyledButton = styled.div`
   `}
 `;
 
-const Button = ({ menubar, subtitle, children }) => {
+const Button = ({ menubar, subtitle, children, onClick }) => {
   return (
-    <StyledButton menubar={menubar} subtitle={subtitle}>
+    <StyledButton menubar={menubar} subtitle={subtitle} onClick={onClick}>
       {children}
     </StyledButton>
   );
