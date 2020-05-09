@@ -5,4 +5,3 @@ const Algoritma = () => {
 };
 
 export default Algoritma;
-algoritma;

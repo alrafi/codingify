@@ -9,6 +9,7 @@ import {
   MiddleSection as AnswerSection,
   RightSection as ResultSection,
 } from '../../../components/LayoutSection';
+import { Link } from 'react-router-dom';
 
 const BoxResult = styled.div`
   width: 100%;
@@ -37,6 +38,24 @@ const NavComponent = styled.div`
 
   span {
     cursor: pointer;
+  }
+`;
+
+const SubWrapper = styled.div`
+  display: flex;
+
+  .link {
+    color: #303030;
+    text-decoration: none;
+  }
+`;
+
+const Back = styled.p`
+  font-size: 60%;
+  color: #303030;
+  margin: 10px 0 0 10px;
+  &:hover {
+    color: #009d86;
   }
 `;
 
@@ -117,7 +136,12 @@ const Dekomposisi = () => {
       <MenuBar />
       <QuizSection />
       <AnswerSection padding="20px">
-        <SubTopic>Dekomposisi</SubTopic>
+        <SubWrapper>
+          <SubTopic>Dekomposisi</SubTopic>
+          <Link to="/quiz" className="link">
+            <Back>(back to computational thinking)</Back>
+          </Link>
+        </SubWrapper>
         <Text>
           Silahkan pilih <span>Dekomposisi</span> mana saja yang tepat untuk
           persoalan di samping.

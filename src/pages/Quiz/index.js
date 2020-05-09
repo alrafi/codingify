@@ -41,13 +41,13 @@ const ComponentItem = styled.div`
   align-items: center;
   width: 400px;
   height: 175px;
-  background-color: #dbf6f6;
+  background-color: #f5f6f7;
   border-radius: 20px;
   padding: 0 20px;
   cursor: pointer;
 
   &:hover {
-    background-color: #f5f6f7;
+    background-color: #dbf6f6;
   }
 
   .dekomposisi {
@@ -100,20 +100,26 @@ const Quiz = () => {
               <ComponentName>Dekomposisi</ComponentName>
             </ComponentItem>
           </Link>
-          <ComponentItem>
-            <img src={abstraksi} alt="Abstraksi" className="abstraksi" />
-            <ComponentName>Abstraksi</ComponentName>
-          </ComponentItem>
+          <Link to="/quiz-abstraksi" className="link">
+            <ComponentItem>
+              <img src={abstraksi} alt="Abstraksi" className="abstraksi" />
+              <ComponentName>Abstraksi</ComponentName>
+            </ComponentItem>
+          </Link>
         </ComponentWrapper>
         <ComponentWrapper>
-          <ComponentItem>
-            <img src={algoritma} alt="Algoritma" className="algoritma" />
-            <ComponentName>Algoritma</ComponentName>
-          </ComponentItem>
-          <ComponentItem>
-            <img src={pola} alt="Pengenalan Pola" className="pola" />
-            <ComponentName>Pengenalan Pola</ComponentName>
-          </ComponentItem>
+          <Link to="/quiz-algoritma" className="link">
+            <ComponentItem>
+              <img src={algoritma} alt="Algoritma" className="algoritma" />
+              <ComponentName>Algoritma</ComponentName>
+            </ComponentItem>
+          </Link>
+          <Link to="/quiz-pola" className="link">
+            <ComponentItem>
+              <img src={pola} alt="Pengenalan Pola" className="pola" />
+              <ComponentName>Pengenalan Pola</ComponentName>
+            </ComponentItem>
+          </Link>
         </ComponentWrapper>
       </CompThinkingSection>
     </MainWrapper>
