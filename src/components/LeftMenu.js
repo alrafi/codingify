@@ -60,9 +60,11 @@ const LeftMenu = () => {
             <p>Learn</p>
           </MenuItem>
         </Link>
-        <MenuItem>
-          <p>Quiz</p>
-        </MenuItem>
+        <Link to="/quiz" className="link">
+          <MenuItem>
+            <p>Quiz</p>
+          </MenuItem>
+        </Link>
         <MenuItem>
           <p>Leaderboard</p>
         </MenuItem>

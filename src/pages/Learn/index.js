@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '../../components/Button';
+import {
+  LeftSection as ConceptSection,
+  MiddleSection as CodeSection,
+  RightSection as ConsoleSection,
+} from '../../components/LayoutSection';
+import {
+  Topic,
+  SubTopic,
+  Text,
+  CodeBox,
+  CodeText,
+  TextHighlight,
+  SubTitle,
+} from '../../components/contentComponent';
 
 import MenuBar from '../../components/MenuBar';
 import video from '../../assets/video.mp4';
@@ -20,17 +34,6 @@ const MainWrapper = styled.div`
 `;
 
 // CODE SECTION
-const CodeSection = styled.div`
-  width: 32%;
-  height: 85vh;
-  background: #ffffff;
-  border-radius: 40px 40px 0px 0px;
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 0);
-  padding: 30px 0;
-`;
 
 const TitleEditor = styled.p`
   font-size: 120%;
@@ -40,71 +43,8 @@ const TitleEditor = styled.p`
 `;
 
 // CONSOLE SECTION
-const ConsoleSection = styled.div`
-  width: 32%;
-  height: 85vh;
-  background: #ffffff;
-  border-radius: 40px 0px 0px 0px;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  padding: 20px;
-`;
 
 // CONCEPT SECTION
-const ConceptSection = styled.div`
-  width: 32%;
-  height: 85vh;
-  background: #ffffff;
-  border-radius: 0px 40px 0px 0px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  overflow: auto;
-  padding: 20px;
-`;
-
-const Topic = styled.p`
-  font-size: 70%;
-`;
-
-const SubTopic = styled.p`
-  font-size: 120%;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
-
-const Text = styled.p`
-  font-size: 80%;
-  line-height: 20px;
-  margin-bottom: 10px;
-`;
-
-const CodeBox = styled.div`
-  background-color: #f5f6f7;
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 10px;
-`;
-
-const CodeText = styled.p`
-  font-family: 'Fira Code', monospace;
-  font-size: 70%;
-`;
-
-const TextHighlight = styled.p`
-  font-family: 'Fira Code', monospace;
-  font-size: 90%;
-  background-color: #d0d0d5;
-  display: inline;
-`;
-
-const SubTitle = styled.p`
-  font-weight: bold;
-  margin-bottom: 15px;
-  font-size: 80%;
-  margin-top: 10px;
-`;
 
 const ButtonWrapper = styled.div`
   display: flex;
