@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 import Button from '../../components/Button';
 import {
   LeftSection as ConceptSection,
@@ -49,6 +49,24 @@ const ButtonWrapper = styled.div`
 const BoxResult = styled.div`
   width: 100%;
   height: 400px;
+`;
+
+const SubWrapper = styled.div`
+  display: flex;
+
+  .link {
+    color: #303030;
+    text-decoration: none;
+  }
+`;
+
+const Back = styled.p`
+  font-size: 60%;
+  color: #303030;
+  margin: 2px 0 0 10px;
+  &:hover {
+    color: #009d86;
+  }
 `;
 
 const onChange = (newValue) => {
@@ -136,7 +154,13 @@ const Learn = () => {
     <MainWrapper>
       <MenuBar />
       <ConceptSection>
-        <Topic>Array</Topic>
+        <SubWrapper>
+          <Topic>Array</Topic>
+          <Link to="/learn-topics" className="link">
+            <Back>(back to List Topics)</Back>
+          </Link>
+        </SubWrapper>
+
         <SubTopic>Perkenalan</SubTopic>
         <Text>
           Array merupakan variabel dengan satu nama, tetapi mengandung banyak

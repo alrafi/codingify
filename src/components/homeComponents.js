@@ -1,5 +1,51 @@
 import styled from 'styled-components';
 
+export const allTimeTable = [
+  {
+    id: 1,
+    name: 'bryanmax',
+    points: 197,
+  },
+  {
+    id: 2,
+    name: 'alrafi',
+    points: 112,
+  },
+  {
+    id: 3,
+    name: 'star97',
+    points: 83,
+  },
+  {
+    id: 4,
+    name: 'merahputih',
+    points: 77,
+  },
+];
+
+export const pekanIniTable = [
+  {
+    id: 1,
+    name: 'martinwhite',
+    points: '+28',
+  },
+  {
+    id: 2,
+    name: 'ujanglagi4',
+    points: '+21',
+  },
+  {
+    id: 3,
+    name: 'pakdangklek',
+    points: '+17',
+  },
+  {
+    id: 4,
+    name: 'tuanvin12',
+    points: '+14',
+  },
+];
+
 export const MainWrapper = styled.div`
   background-color: #f6f4fc;
   position: relative;

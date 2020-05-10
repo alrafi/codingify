@@ -9,58 +9,14 @@ import {
   LeaderboardTitle,
   RankName,
   RankWrapper,
-} from './components/homeComponents';
+  allTimeTable,
+  pekanIniTable,
+} from '../../components/homeComponents';
 import RankTable from './RankTable';
 import LearnItem from './LearnItem';
 import LeftMenu from '../../components/LeftMenu';
 import RightMenu from '../../components/RightMenu';
 import WelcomeSection from './WelcomeSection';
-
-const allTimeTable = [
-  {
-    id: 1,
-    name: 'bryanmax',
-    points: 197,
-  },
-  {
-    id: 2,
-    name: 'alrafi',
-    points: 112,
-  },
-  {
-    id: 3,
-    name: 'star97',
-    points: 83,
-  },
-  {
-    id: 4,
-    name: 'merahputih',
-    points: 77,
-  },
-];
-
-const pekanIniTable = [
-  {
-    id: 1,
-    name: 'martinwhite',
-    points: '+28',
-  },
-  {
-    id: 2,
-    name: 'ujanglagi4',
-    points: '+21',
-  },
-  {
-    id: 3,
-    name: 'pakdangklek',
-    points: '+17',
-  },
-  {
-    id: 4,
-    name: 'tuanvin12',
-    points: '+14',
-  },
-];
 
 const Home = () => {
   return (

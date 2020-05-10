@@ -53,7 +53,7 @@ const SubWrapper = styled.div`
 const Back = styled.p`
   font-size: 60%;
   color: #303030;
-  margin: 10px 0 0 10px;
+  margin: 10px 0 0 5px;
   &:hover {
     color: #009d86;
   }

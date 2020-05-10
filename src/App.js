@@ -11,6 +11,7 @@ import PengenalanPola from './pages/Quiz/component/PengenalanPola';
 import Algoritma from './pages/Quiz/component/Algoritma';
 import './index.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import ListTopic from './pages/ListTopic';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path="/quiz-abstraksi" component={Abstraksi} />
           <Route path="/quiz-algoritma" component={Algoritma} />
           <Route path="/quiz-pola" component={PengenalanPola} />
+          <Route path="/learn-topics" component={ListTopic} />
         </Switch>
       </Router>
     );
