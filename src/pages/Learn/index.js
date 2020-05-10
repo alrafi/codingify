@@ -33,18 +33,12 @@ const MainWrapper = styled.div`
   position: relative;
 `;
 
-// CODE SECTION
-
 const TitleEditor = styled.p`
   font-size: 120%;
   font-weight: bold;
   margin-bottom: 10px;
   margin-left: 20px;
 `;
-
-// CONSOLE SECTION
-
-// CONCEPT SECTION
 
 const ButtonWrapper = styled.div`
   display: flex;
