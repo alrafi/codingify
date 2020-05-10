@@ -1,5 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import { LeftSection as QuizSectionLayout } from '../../components/LayoutSection';
+import { Link } from 'react-router-dom';
 import {
   Topic,
   SubTopic,
@@ -9,10 +11,33 @@ import {
   SubTitle,
 } from '../../components/contentComponent';
 
+const SubWrapper = styled.div`
+  display: flex;
+
+  .link {
+    color: #303030;
+    text-decoration: none;
+  }
+`;
+
+const Back = styled.p`
+  font-size: 60%;
+  color: #303030;
+  margin: 2px 0 0 10px;
+  &:hover {
+    color: #009d86;
+  }
+`;
+
 const QuizSection = () => {
   return (
     <QuizSectionLayout>
-      <Topic>Kuis | Array</Topic>
+      <SubWrapper>
+        <Topic>Kuis | Array</Topic>
+        <Link to="/quiz-list" className="link">
+          <Back>(back to Quiz List)</Back>
+        </Link>
+      </SubWrapper>
       <SubTopic>Rotasi Matriks</SubTopic>
       <SubTitle>Deskripsi</SubTitle>
       <Text>

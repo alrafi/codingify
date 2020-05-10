@@ -12,6 +12,11 @@ const LeftMenuStyled = styled.div`
   border-top-right-radius: 40px;
   border-bottom-right-radius: 40px;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+
+  .link {
+    color: #222831;
+    text-decoration: none;
+  }
 `;
 
 const SidebarMenu = styled.div`
@@ -48,7 +53,9 @@ const MenuItem = styled.div`
 const LeftMenu = () => {
   return (
     <LeftMenuStyled>
-      <Logo />
+      <Link to="/dashboard" className="link">
+        <Logo />
+      </Link>
       <SidebarMenu>
         <Link to="/dashboard" className="link">
           <MenuItem>
@@ -60,7 +67,7 @@ const LeftMenu = () => {
             <p>Learn</p>
           </MenuItem>
         </Link>
-        <Link to="/quiz" className="link">
+        <Link to="/quiz-list" className="link">
           <MenuItem>
             <p>Quiz</p>
           </MenuItem>
