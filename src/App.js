@@ -13,6 +13,7 @@ import './index.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ListTopic from './pages/ListTopic';
 import ListQuiz from './pages/ListQuiz';
+import Leaderboard from './pages/Leaderboard';
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/quiz-algoritma" component={Algoritma} />
           <Route path="/quiz-pola" component={PengenalanPola} />
           <Route path="/learn-topics" component={ListTopic} />
+          <Route path="/leaderboard" component={Leaderboard} />
         </Switch>
       </Router>
     );
