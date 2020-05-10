@@ -77,9 +77,11 @@ const LeftMenu = () => {
             <p>Leaderboard</p>
           </MenuItem>
         </Link>
-        <MenuItem>
-          <p>Profile</p>
-        </MenuItem>
+        <Link to="/profile" className="link">
+          <MenuItem>
+            <p>Profile</p>
+          </MenuItem>
+        </Link>
       </SidebarMenu>
     </LeftMenuStyled>
   );
