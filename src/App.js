@@ -12,6 +12,7 @@ import Algoritma from './pages/Quiz/component/Algoritma';
 import './index.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ListTopic from './pages/ListTopic';
+import ListQuiz from './pages/ListQuiz';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/dashboard" component={Home} />
           <Route path="/learn" component={Learn} />
           <Route path="/quiz" component={Quiz} />
+          <Route path="/quiz-list" component={ListQuiz} />
           <Route path="/quiz-dekomposisi" component={Dekomposisi} />
           <Route path="/quiz-abstraksi" component={Abstraksi} />
           <Route path="/quiz-algoritma" component={Algoritma} />

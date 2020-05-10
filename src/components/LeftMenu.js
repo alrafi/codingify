@@ -55,7 +55,7 @@ const LeftMenu = () => {
             <p>Dashboard</p>
           </MenuItem>
         </Link>
-        <Link to="/learn" className="link">
+        <Link to="/learn-topics" className="link">
           <MenuItem>
             <p>Learn</p>
           </MenuItem>
