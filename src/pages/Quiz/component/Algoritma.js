@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import { MainWrapper } from '../mainWrapper';
 import MenuBar from '../../../components/MenuBar';
 import Button from '../../../components/Button';
@@ -18,6 +17,7 @@ import check from '../../../assets/check.png';
 import rightArrow from '../../../assets/right-arrow.png';
 import adaptive from '../../../assets/adaptive.png';
 import { TextHighlight } from '../../../components/contentComponent';
+import { Link } from 'react-router-dom';
 
 const TitleEditor = styled.p`
   font-size: 120%;
@@ -44,6 +44,24 @@ const Text = styled.p`
 
   span {
     font-weight: bold;
+  }
+`;
+
+const SubWrapper = styled.div`
+  display: flex;
+
+  .link {
+    color: #303030;
+    text-decoration: none;
+  }
+`;
+
+const Back = styled.p`
+  font-size: 60%;
+  color: #303030;
+  margin: 10px 0 0 10px;
+  &:hover {
+    color: #009d86;
   }
 `;
 
@@ -198,7 +216,12 @@ const rotasiMatriks = (m, n, matriks) => {
       <MenuBar />
       <QuizSection />
       <CodeSection>
-        <TitleEditor>Algoritma</TitleEditor>
+        <SubWrapper>
+          <TitleEditor>Algoritma</TitleEditor>
+          <Link to="/quiz" className="link">
+            <Back>(back to computational thinking)</Back>
+          </Link>
+        </SubWrapper>
         <Text>
           Silahkan tulis <span>Algoritma</span> yang tepat untuk persoalan di
           samping menggunakan sintaks <TextHighlight>JavaScript</TextHighlight>{' '}
