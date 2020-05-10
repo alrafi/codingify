@@ -17,6 +17,7 @@ import { SubTopic, CodeText } from '../../../components/contentComponent';
 import check from '../../../assets/check.png';
 import rightArrow from '../../../assets/right-arrow.png';
 import adaptive from '../../../assets/adaptive.png';
+import { TextHighlight } from '../../../components/contentComponent';
 
 const TitleEditor = styled.p`
   font-size: 120%;
@@ -34,6 +35,16 @@ const ButtonWrapper = styled.div`
 const BoxResult = styled.div`
   width: 100%;
   height: 400px;
+`;
+
+const Text = styled.p`
+  font-size: 80%;
+  line-height: 20px;
+  margin: 0 0 10px 20px;
+
+  span {
+    font-weight: bold;
+  }
 `;
 
 // MODAL
@@ -187,7 +198,12 @@ const rotasiMatriks = (m, n, matriks) => {
       <MenuBar />
       <QuizSection />
       <CodeSection>
-        <TitleEditor>Online Editor</TitleEditor>
+        <TitleEditor>Algoritma</TitleEditor>
+        <Text>
+          Silahkan tulis <span>Algoritma</span> yang tepat untuk persoalan di
+          samping menggunakan sintaks <TextHighlight>JavaScript</TextHighlight>{' '}
+          yang sudah dipelajari.
+        </Text>
         <AceEditor
           mode="javascript"
           theme="tomorrow"
@@ -195,7 +211,7 @@ const rotasiMatriks = (m, n, matriks) => {
           name="UNIQUE_ID_OF_DIV"
           editorProps={{ $blockScrolling: true }}
           width="100%"
-          height="400px"
+          height="320px"
           fontSize={16}
           showGutter={true}
           highlightActiveLine={true}
