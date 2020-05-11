@@ -175,10 +175,23 @@ const Algoritma = () => {
 /** Your test output will go here **/
 `);
 
+  const [run, setRun] = useState(0);
+  const [answerFalse, setAnswerFalse] = useState('none');
+  const [answerTrue, setAnswerTrue] = useState('block');
+
   const runClick = () => {
-    setResult(`
-    // running tests, tests completed
-    `);
+    setRun(run + 1);
+    console.log(run);
+    if (run >= 2) {
+      setModalForm(true);
+      setAnswerTrue('block');
+      setAnswerFalse('none');
+    } else {
+      setResult(`running tests, tests completed`);
+      setModalForm(false);
+      setAnswerFalse('block');
+      setAnswerTrue('none');
+    }
   };
 
   const [code, setCode] = useState(`// Setup
@@ -195,12 +208,13 @@ const rotasiMatriks = (m, n, matriks) => {
 `);
 
   const onChange = (newValue) => {
-    console.log('change', newValue);
+    // console.log('change', newValue);
     setCode(newValue);
   };
 
   // MODAL
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [modalForm, setModalForm] = useState(false);
   const openModal = () => {
     setIsOpen(true);
   };
@@ -208,8 +222,6 @@ const rotasiMatriks = (m, n, matriks) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-
-  const modalLogic = () => true;
 
   return (
     <MainWrapper>
@@ -252,15 +264,27 @@ const rotasiMatriks = (m, n, matriks) => {
         </ButtonWrapper>
       </CodeSection>
       <ConsoleSection>
-        <SubTopic>Live Console</SubTopic>
-        <BoxResult>
-          <CodeText>{result}</CodeText>
+        <SubTopic>Hasil</SubTopic>
+        <BoxResult style={{ display: `${answerTrue}` }}>
+          <CodeText style={{ color: '#39A14A' }}>{result}</CodeText>
+        </BoxResult>
+        <BoxResult style={{ display: `${answerFalse}`, color: '#F44336' }}>
+          <CodeText>// result</CodeText>
+          <CodeText style={{ color: '#F44336' }}>
+            false on test case #7
+          </CodeText>
+          <CodeText style={{ color: '#F44336' }}>expected output:</CodeText>
+          <CodeText style={{ color: '#F44336' }}>45 47 66 34</CodeText>
+          <CodeText style={{ color: '#F44336' }}>75 47 71 87</CodeText>
+          <CodeText style={{ color: '#F44336' }}>35 48 52 15</CodeText>
+          <CodeText style={{ color: '#F44336' }}>your output:</CodeText>
+          <CodeText style={{ color: '#F44336' }}>45 47 66 34</CodeText>
         </BoxResult>
         <ButtonWrapper>
           <Button onClick={openModal}>SUBMIT</Button>
         </ButtonWrapper>
       </ConsoleSection>
-      {!modalLogic ? (
+      {modalForm ? (
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
@@ -277,7 +301,9 @@ const rotasiMatriks = (m, n, matriks) => {
               <TopicName>Kuis Selanjutnya: Wildcard</TopicName>
               <img src={rightArrow} alt="next" />
             </NextWrapper>
-            <Button width="200px">Kembali ke Halaman Kuis</Button>
+            <Link to="/quiz-list">
+              <Button width="200px">Kembali ke Halaman Kuis</Button>
+            </Link>
           </ModalBox>
         </Modal>
       ) : (

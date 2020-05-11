@@ -42,8 +42,14 @@ const TitleEditor = styled.p`
 
 const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-end;
   padding: 30px;
+  flex-direction: column;
+
+  p {
+    color: #f6f6f6;
+    cursor: pointer;
+  }
 `;
 
 const BoxResult = styled.div`
@@ -134,12 +140,6 @@ const Learn = () => {
 /** Your test output will go here **/
 `);
 
-  const runClick = () => {
-    setResult(`
-    // running tests, tests completed
-    `);
-  };
-
   // MODAL
   const [modalIsOpen, setIsOpen] = useState(false);
   const openModal = () => {
@@ -148,6 +148,22 @@ const Learn = () => {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const [colorAnswer, setColorAnswer] = useState('#3D3D3D');
+
+  const runClick = () => {
+    setResult(`
+    // running tests, tests completed
+    `);
+    setColorAnswer('#39A14A');
+  };
+
+  const falseClick = () => {
+    setResult(`
+    // output: jawaban Anda masih belum benar
+    `);
+    setColorAnswer('#F44336');
   };
 
   return (
@@ -193,8 +209,6 @@ const Learn = () => {
           perkenalan array di bawah ini.
         </Text>
         <Player>
-          {/* // playsInline
-          // poster="/assets/poster.png" */}
           <source src={video} />
         </Player>
         <SubTitle>Latihan Konsep</SubTitle>
@@ -233,12 +247,13 @@ let myArr = [];
         />
         <ButtonWrapper>
           <Button onClick={runClick}>RUN</Button>
+          <p onClick={falseClick}>run</p>
         </ButtonWrapper>
       </CodeSection>
       <ConsoleSection>
         <SubTopic>Live Console</SubTopic>
         <BoxResult>
-          <CodeText>{result}</CodeText>
+          <CodeText color={colorAnswer}>{result}</CodeText>
         </BoxResult>
         <ButtonWrapper>
           <Button onClick={openModal}>SUBMIT</Button>
@@ -257,7 +272,9 @@ let myArr = [];
           <TopicDone>Materi Selesai</TopicDone>
           <img src={check} alt="completed" />
           <TopicName>Array - Perkenalan</TopicName>
-          <Button width="200px">Lanjut Mengerjakan Kuis</Button>
+          <Link to="/quiz">
+            <Button width="200px">Lanjut Mengerjakan Kuis</Button>
+          </Link>
         </ModalBox>
       </Modal>
     </MainWrapper>

@@ -117,7 +117,7 @@ const Profile = () => {
                 </Link>
 
                 <Last>Kuis terakhir diselesaikan:</Last>
-                <Link to="/learn" className="link">
+                <Link to="/quiz" className="link">
                   <Content>
                     <p>Rotasi Matriks</p>
                     <img src={rightArrow} alt="next" />
