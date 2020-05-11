@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import avatar from '../assets/avatar.png';
 import Button from './Button';
 import AccountNotif from './AccountNotif';
+import { Link } from 'react-router-dom';
 
 // RIGHT MENU
 const RightMenuStyled = styled.div`
@@ -127,7 +128,9 @@ const RightMenu = () => {
         </AchieveWrapper>
       </DataProfile>
       <ButtonWrapper>
-        <Button>Lihat Profil</Button>
+        <Link to="/profile">
+          <Button>Lihat Profil</Button>
+        </Link>
       </ButtonWrapper>
     </RightMenuStyled>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import {
   MainWrapper,
   MainContent,
@@ -17,6 +18,54 @@ import LearnItem from './LearnItem';
 import LeftMenu from '../../components/LeftMenu';
 import RightMenu from '../../components/RightMenu';
 import WelcomeSection from './WelcomeSection';
+import percabangan from '../../assets/topic-icon/4conditional.png';
+import perulangan from '../../assets/topic-icon/5looping.png';
+import array from '../../assets/topic-icon/7array.png';
+import rightArrow from '../../assets/right-arrow.png';
+import { Link } from 'react-router-dom';
+
+const dataHome = [
+  {
+    idName: 'Percabangan',
+    enName: 'Conditional',
+    img: `${percabangan}`,
+  },
+  {
+    idName: 'Perulangan',
+    enName: 'Looping',
+    img: `${perulangan}`,
+  },
+  {
+    idName: 'Array',
+    enName: 'Array',
+    img: `${array}`,
+  },
+];
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  img {
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+  }
+`;
+
+const ContentHome = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  img {
+    margin-left: 10px;
+    margin-top: -15px;
+    width: 15px;
+    height: 15px;
+  }
+`;
 
 const Home = () => {
   return (
@@ -29,10 +78,19 @@ const Home = () => {
         <InfoSection>
           <LearnSection>
             <p>Learn</p>
-            <LearnItem idName="Percabangan" enName="Conditional" />
-            <LearnItem idName="Perulangan" enName="Looping" />
-            <LearnItem idName="Array" enName="Array" />
-            <ShowAll>Lihat semua</ShowAll>
+            {dataHome.map(({ idName, enName, img }) => {
+              return (
+                <Link to="learn" className="link">
+                  <LearnItem idName={idName} enName={enName} img={img} />
+                </Link>
+              );
+            })}
+            <Link to="/learn-topics" className="link">
+              <ContentHome>
+                <ShowAll>Lihat semua</ShowAll>
+                <img src={rightArrow} alt="next" />
+              </ContentHome>
+            </Link>
           </LearnSection>
           <LeaderboardSection>
             <LeaderboardTitle>Leaderboard</LeaderboardTitle>
@@ -47,7 +105,12 @@ const Home = () => {
                   />
                 );
               })}
-              <ShowAll>Lihat semua</ShowAll>
+              <Link to="/leaderboard" className="link">
+                <Content>
+                  <ShowAll>Lihat semua</ShowAll>
+                  <img src={rightArrow} alt="next" />
+                </Content>
+              </Link>
             </RankWrapper>
             <RankWrapper>
               <RankName>Pekan ini</RankName>
@@ -60,7 +123,6 @@ const Home = () => {
                   />
                 );
               })}
-              <ShowAll>Lihat semua</ShowAll>
             </RankWrapper>
           </LeaderboardSection>
         </InfoSection>

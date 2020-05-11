@@ -22,9 +22,22 @@ const Register = () => {
         </Link>
         <FormInput>
           <h2>Sign Up</h2>
-          <Input name="Username" placeholder="Choose username" focus="true" />
-          <Input name="E-mail address" placeholder="you@example.com" />
-          <Input name="Password" placeholder="Enter your password" />
+          <Input
+            name="Username"
+            type="text"
+            placeholder="Choose username"
+            focus="true"
+          />
+          <Input
+            name="E-mail address"
+            type="text"
+            placeholder="you@example.com"
+          />
+          <Input
+            name="Password"
+            type="password"
+            placeholder="Enter your password"
+          />
           <ButtonWrapper>
             <Button>Sign Up</Button>
           </ButtonWrapper>

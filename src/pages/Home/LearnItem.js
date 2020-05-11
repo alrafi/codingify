@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import rightNext from '../../assets/right-next.png';
-import percabangan from '../../assets/percabangan.png';
 
 const LearnStyled = styled.div`
   width: 100%;
@@ -35,7 +34,7 @@ const ENName = styled.p`
 const TopicIcon = styled.div`
   width: 65px;
   height: 65px;
-  background: url(${percabangan});
+  background: url(${({ img }) => img});
   background-size: cover;
   margin-right: 20px;
 `;
@@ -47,10 +46,10 @@ const NextIcon = styled.div`
   background-size: cover;
 `;
 
-const LearnItem = ({ idName, enName }) => {
+const LearnItem = ({ idName, enName, img }) => {
   return (
     <LearnStyled>
-      <TopicIcon></TopicIcon>
+      <TopicIcon img={img}></TopicIcon>
       <TopicName>
         <IDName>{idName}</IDName>
         <ENName>{enName}</ENName>

@@ -79,6 +79,10 @@ export const LearnSection = styled.div`
   p {
     margin-bottom: 20px;
   }
+
+  .link {
+    text-decoration: none;
+  }
 `;
 
 export const ShowAll = styled.p`
@@ -105,4 +109,9 @@ export const RankName = styled.p`
 
 export const RankWrapper = styled.div`
   margin-bottom: 20px;
+
+  .link {
+    text-decoration: none;
+    color: #3d3d3d;
+  }
 `;

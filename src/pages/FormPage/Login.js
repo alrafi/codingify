@@ -26,10 +26,17 @@ const Login = () => {
             name="Username"
             placeholder="Enter your username"
             focus="true"
+            type="text"
           />
-          <Input name="Password" placeholder="Enter your password" />
+          <Input
+            name="Password"
+            type="password"
+            placeholder="Enter your password"
+          />
           <ButtonWrapper>
-            <Button>Log in</Button>
+            <Link to="/dashboard">
+              <Button onClick="login">Log in</Button>
+            </Link>
           </ButtonWrapper>
           <LinkSwitch>
             Don’t have an account?{' '}
