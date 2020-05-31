@@ -39,7 +39,9 @@ const Register = () => {
             placeholder="Enter your password"
           />
           <ButtonWrapper>
-            <Button>Sign Up</Button>
+            <Link to="/login">
+              <Button>Sign Up</Button>
+            </Link>
           </ButtonWrapper>
           <LinkSwitch>
             Already have an account?{' '}
