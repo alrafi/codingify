@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../../components/Button';
+import { Link } from 'react-router-dom';
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -13,6 +14,9 @@ const MenuList = styled.ul`
   align-items: center;
   list-style: none;
   font-size: 90%;
+  .link {
+    text-decoration: none;
+  }
 `;
 
 const ListItem = styled.li`
@@ -31,7 +35,9 @@ const MenuBar = () => {
         <ListItem>Quiz</ListItem>
         <ListItem>Leaderboard</ListItem>
         <ListItem>About</ListItem>
-        <Button menubar>Sign In</Button>
+        <Link to="/login" className="link">
+          <Button menubar>Sign In</Button>
+        </Link>
       </MenuList>
     </MenuWrapper>
   );
