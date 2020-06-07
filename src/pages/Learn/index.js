@@ -23,6 +23,7 @@ import check from '../../assets/check.png';
 
 import AceEditor from 'react-ace';
 import { Player } from 'video-react';
+import '../../../node_modules/video-react/dist/video-react.css';
 import Modal from 'react-modal';
 
 import 'ace-builds/src-noconflict/mode-java';
