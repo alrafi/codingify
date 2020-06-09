@@ -12,7 +12,7 @@ import Modal from 'react-modal';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
-import { SubTopic, CodeText } from '../../../components/contentComponent';
+import { SubTopic } from '../../../components/contentComponent';
 import check from '../../../assets/check.png';
 import rightArrow from '../../../assets/right-arrow.png';
 import adaptive from '../../../assets/adaptive.png';
