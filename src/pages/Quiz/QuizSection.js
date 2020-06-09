@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { LeftSection as QuizSectionLayout } from '../../components/LayoutSection';
 import { Link } from 'react-router-dom';
 import {
-  Topic,
   SubTopic,
   Text,
   CodeBox,
   CodeText,
   SubTitle,
 } from '../../components/contentComponent';
+import leftArrow from '../../assets/left-arrow.png';
 
 const SubWrapper = styled.div`
   display: flex;
@@ -18,25 +18,26 @@ const SubWrapper = styled.div`
     color: #303030;
     text-decoration: none;
   }
+
+  img {
+    /* margin-top: -3px; */
+    margin-right: 10px;
+  }
 `;
 
-const Back = styled.p`
-  font-size: 60%;
-  color: #303030;
-  margin: 2px 0 0 10px;
-  &:hover {
-    color: #009d86;
-  }
+const Topic = styled.p`
+  font-size: 70%;
+  margin-top: 2px;
 `;
 
 const QuizSection = () => {
   return (
     <QuizSectionLayout>
       <SubWrapper>
-        <Topic>Kuis | Array</Topic>
         <Link to="/quiz-list" className="link">
-          <Back>(back to Quiz List)</Back>
+          <img src={leftArrow} alt="back" />
         </Link>
+        <Topic>Kuis | Array</Topic>
       </SubWrapper>
       <SubTopic>Rotasi Matriks</SubTopic>
       <SubTitle>Deskripsi</SubTitle>

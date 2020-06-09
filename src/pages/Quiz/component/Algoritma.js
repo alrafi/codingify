@@ -18,6 +18,7 @@ import rightArrow from '../../../assets/right-arrow.png';
 import adaptive from '../../../assets/adaptive.png';
 import { TextHighlight } from '../../../components/contentComponent';
 import { Link } from 'react-router-dom';
+import leftArrow from '../../../assets/left-arrow.png';
 
 const TitleEditor = styled.p`
   font-size: 120%;
@@ -54,14 +55,10 @@ const SubWrapper = styled.div`
     color: #303030;
     text-decoration: none;
   }
-`;
 
-const Back = styled.p`
-  font-size: 60%;
-  color: #303030;
-  margin: 10px 0 0 10px;
-  &:hover {
-    color: #009d86;
+  img {
+    margin-top: 7px;
+    margin-left: 20px;
   }
 `;
 
@@ -229,10 +226,10 @@ const rotasiMatriks = (m, n, matriks) => {
       <QuizSection />
       <CodeSection>
         <SubWrapper>
-          <TitleEditor>Algoritma</TitleEditor>
           <Link to="/quiz" className="link">
-            <Back>(back to computational thinking)</Back>
+            <img src={leftArrow} alt="back" />
           </Link>
+          <TitleEditor>Algoritma</TitleEditor>
         </SubWrapper>
         <Text>
           Silahkan tulis <span>Algoritma</span> yang tepat untuk persoalan di

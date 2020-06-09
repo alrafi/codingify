@@ -10,6 +10,7 @@ import {
   RightSection as ResultSection,
 } from '../../../components/LayoutSection';
 import { Link } from 'react-router-dom';
+import leftArrow from '../../../assets/left-arrow.png';
 
 const BoxResult = styled.div`
   width: 100%;
@@ -48,15 +49,19 @@ const SubWrapper = styled.div`
     color: #303030;
     text-decoration: none;
   }
+
+  img {
+    margin-top: 7px;
+    margin-right: 10px;
+  }
 `;
 
-const Back = styled.p`
-  font-size: 60%;
-  color: #303030;
-  margin: 10px 0 0 10px;
-  &:hover {
-    color: #009d86;
-  }
+const TextHint = styled.p`
+  font-size: 80%;
+  line-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-weight: bold;
 `;
 
 const Dekomposisi = () => {
@@ -137,15 +142,16 @@ const Dekomposisi = () => {
       <QuizSection />
       <AnswerSection padding="20px">
         <SubWrapper>
-          <SubTopic>Dekomposisi</SubTopic>
           <Link to="/quiz" className="link">
-            <Back>(back to computational thinking)</Back>
+            <img src={leftArrow} alt="back" />
           </Link>
+          <SubTopic>Dekomposisi</SubTopic>
         </SubWrapper>
         <Text>
           Silahkan pilih <span>Dekomposisi</span> mana saja yang tepat untuk
           persoalan di samping.
         </Text>
+        <TextHint>Hint: Jawaban yang tepat bisa lebih dari satu</TextHint>
         <CheckboxWrapper>
           <CheckboxItem
             id={1}
