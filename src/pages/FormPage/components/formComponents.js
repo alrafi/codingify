@@ -26,7 +26,7 @@ export const FormSection = styled.div`
 `;
 
 export const FormInput = styled.div`
-  margin-top: 60px;
+  margin-top: 40px;
   width: 300px;
   align-self: center;
 
@@ -77,4 +77,20 @@ export const ImageDisplay = styled.div`
 export const InfoDisplay = styled.h2`
   font-size: 120%;
   color: #ffffff;
+`;
+
+export const SuccessNotif = styled.div`
+  height: 35px;
+  width: 450px;
+  background-color: #009d86;
+  margin-left: 60px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-left: 10px;
+
+  p {
+    font-size: 90%;
+    color: #ffffff;
+  }
 `;

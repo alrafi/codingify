@@ -11,15 +11,19 @@ import {
   InfoSection,
   ImageDisplay,
   InfoDisplay,
+  SuccessNotif,
 } from './components/formComponents';
 
-const Register = () => {
+const RegisterSuccess = () => {
   return (
     <MainWrapper>
       <FormSection>
         <Link to="/" className="link-header">
           <h1>Codingify</h1>
         </Link>
+        <SuccessNotif>
+          <p>Selamat! akun Anda telah berhasil registrasi.</p>
+        </SuccessNotif>
         <FormInput>
           <h2>Sign Up</h2>
           <Input
@@ -39,7 +43,7 @@ const Register = () => {
             placeholder="Enter your password"
           />
           <ButtonWrapper>
-            <Link to="/register-success">
+            <Link to="/login">
               <Button>Sign Up</Button>
             </Link>
           </ButtonWrapper>
@@ -62,4 +66,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterSuccess;

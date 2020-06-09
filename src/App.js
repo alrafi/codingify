@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LandingPage from './pages/LandingPage';
 import Register from './pages/FormPage/Register';
+import RegisterSuccess from './pages/FormPage/RegisterSuccess';
 import Login from './pages/FormPage/Login';
 import Home from './pages/Home';
 import Learn from './pages/Learn';
@@ -23,6 +24,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={LandingPage} />
           <Route path="/register" component={Register} />
+          <Route path="/register-success" component={RegisterSuccess} />
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={Home} />
           <Route path="/learn" component={Learn} />
