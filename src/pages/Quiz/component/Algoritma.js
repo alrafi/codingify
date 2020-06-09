@@ -62,6 +62,18 @@ const SubWrapper = styled.div`
   }
 `;
 
+const ScoreResult = styled.p`
+  font-size: 120%;
+  font-weight: bold;
+  margin-top: 20px;
+`;
+
+const CodeResult = styled.p`
+  font-family: 'Fira Code', monospace;
+  font-size: 90%;
+  color: ${({ color }) => (color ? color : '#3d3d3d')};
+`;
+
 // MODAL
 const customStyles = {
   content: {
@@ -168,23 +180,20 @@ const ModalClose = styled.div`
 Modal.setAppElement('#root');
 
 const Algoritma = () => {
-  const [result, setResult] = useState(`
-/** Your test output will go here **/
-`);
-
   const [run, setRun] = useState(0);
+  const [answerDefault, setAnswerDefault] = useState('block');
   const [answerFalse, setAnswerFalse] = useState('none');
-  const [answerTrue, setAnswerTrue] = useState('block');
+  const [answerTrue, setAnswerTrue] = useState('none');
 
   const runClick = () => {
     setRun(run + 1);
+    setAnswerDefault('none');
     console.log(run);
     if (run >= 2) {
       setModalForm(true);
       setAnswerTrue('block');
       setAnswerFalse('none');
     } else {
-      setResult(`running tests, tests completed`);
       setModalForm(false);
       setAnswerFalse('block');
       setAnswerTrue('none');
@@ -262,20 +271,37 @@ const rotasiMatriks = (m, n, matriks) => {
       </CodeSection>
       <ConsoleSection>
         <SubTopic>Hasil</SubTopic>
+        <BoxResult style={{ display: `${answerDefault}` }}>
+          <CodeResult style={{ color: '#39A14A' }}>
+            /= Your test output will go here =/
+          </CodeResult>
+        </BoxResult>
         <BoxResult style={{ display: `${answerTrue}` }}>
-          <CodeText style={{ color: '#39A14A' }}>{result}</CodeText>
+          <CodeResult style={{ color: '#39A14A' }}>
+            running tests, tests completed
+          </CodeResult>
+          <ScoreResult style={{ color: '#39A14A' }}>Score:</ScoreResult>
+          <ScoreResult style={{ color: '#39A14A', marginTop: '0' }}>
+            100/100
+          </ScoreResult>
         </BoxResult>
         <BoxResult style={{ display: `${answerFalse}`, color: '#F44336' }}>
           <CodeText>/== result ==/</CodeText>
           <CodeText style={{ color: '#F44336' }}>
             false on test case #7
           </CodeText>
-          <CodeText style={{ color: '#F44336' }}>expected output:</CodeText>
-          <CodeText style={{ color: '#F44336' }}>45 47 66 34</CodeText>
-          <CodeText style={{ color: '#F44336' }}>75 47 71 87</CodeText>
-          <CodeText style={{ color: '#F44336' }}>35 48 52 15</CodeText>
-          <CodeText style={{ color: '#F44336' }}>your output:</CodeText>
-          <CodeText style={{ color: '#F44336' }}>45 47 66 34</CodeText>
+          <CodeResult style={{ color: '#F44336', marginTop: '15px' }}>
+            expected output:
+          </CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>45 47 66 34</CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>75 47 71 87</CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>35 48 52 15</CodeResult>
+          <CodeResult style={{ color: '#F44336', marginTop: '15px' }}>
+            your output:
+          </CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>45 47 66 34</CodeResult>
+          <ScoreResult>Score:</ScoreResult>
+          <ScoreResult style={{ marginTop: '0' }}>70/100</ScoreResult>
         </BoxResult>
         <ButtonWrapper>
           <Button onClick={openModal}>SUBMIT</Button>
