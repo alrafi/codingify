@@ -286,10 +286,10 @@ const rotasiMatriks = (m, n, matriks) => {
           </ScoreResult>
         </BoxResult>
         <BoxResult style={{ display: `${answerFalse}`, color: '#F44336' }}>
-          <CodeText>/== result ==/</CodeText>
-          <CodeText style={{ color: '#F44336' }}>
+          <CodeResult>/== result ==/</CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>
             false on test case #7
-          </CodeText>
+          </CodeResult>
           <CodeResult style={{ color: '#F44336', marginTop: '15px' }}>
             expected output:
           </CodeResult>
