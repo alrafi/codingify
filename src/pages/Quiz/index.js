@@ -19,6 +19,10 @@ const CompThinkingSection = styled.div`
   right: 0;
   bottom: 0;
   padding: 20px;
+
+  span {
+    font-weight: bold;
+  }
 `;
 
 const ComponentWrapper = styled.div`
@@ -89,9 +93,14 @@ const Quiz = () => {
           Silahkan pilih komponen computational thinking mana yang ingin
           dikerjakan.
         </Text>
+        <Text>
+          Kerjakan komponen <span>Abstraksi</span>, <span>Dekomposisi</span>,
+          atau <span>Pengenalan Pola</span> sebelum mengerjakan komponen{' '}
+          <span>Algoritma</span>.
+        </Text>
         <ComponentWrapper>
           <Link to="/quiz-dekomposisi" className="link">
-            <ComponentItem>
+            <ComponentItem onClick={() => console.log('dekomposisi click')}>
               <img
                 src={dekomposisi}
                 alt="Dekomposisi"

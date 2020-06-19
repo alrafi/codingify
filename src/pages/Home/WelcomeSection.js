@@ -66,9 +66,7 @@ const WelcomeSection = () => {
       <img src={welcome} alt="welcome" />
       <WelcomeText>
         <Greeting>Selamat datang kembali, alrafi</Greeting>
-        <LastTopic>
-          Materi terakhir yang kamu pelajari adalah Percabangan
-        </LastTopic>
+        <LastTopic>Materi terakhir yang kamu pelajari adalah Array</LastTopic>
         <Link to="/learn" className="link">
           <Content>
             <LearnNow>Pelajari Sekarang</LearnNow>

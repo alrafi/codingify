@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { MainWrapper } from '../mainWrapper';
 import MenuBar from '../../../components/MenuBar';
 import QuizSection from '../QuizSection';
-import { SubTopic, Text, CodeText } from '../../../components/contentComponent';
+import { SubTopic, Text } from '../../../components/contentComponent';
 import Button from '../../../components/Button';
 import {
   MiddleSection as AnswerSection,
@@ -11,6 +11,8 @@ import {
 } from '../../../components/LayoutSection';
 import { Link } from 'react-router-dom';
 import leftArrow from '../../../assets/left-arrow.png';
+import Modal from 'react-modal';
+import check from '../../../assets/check.png';
 
 const BoxResult = styled.div`
   width: 100%;
@@ -30,15 +32,16 @@ const ButtonWrapper = styled.div`
 `;
 
 const CheckboxWrapper = styled.div`
-  height: 350px;
+  height: 290px;
 `;
 
 const NavComponent = styled.div`
   margin-top: 10px;
   font-size: 60%;
 
-  span {
-    cursor: pointer;
+  .link {
+    color: #303030;
+    text-decoration: none;
   }
 `;
 
@@ -64,7 +67,91 @@ const TextHint = styled.p`
   font-weight: bold;
 `;
 
+const CodeResult = styled.p`
+  font-family: 'Fira Code', monospace;
+  font-size: 90%;
+  color: ${({ color }) => (color ? color : '#3d3d3d')};
+`;
+
+// MODAL
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    // zIndex: '999',
+  },
+};
+
+const ModalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+
+  img {
+    width: 180px;
+    height: 180px;
+  }
+`;
+
+const NextWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+const ModalClose = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: #009d86;
+  border-radius: 50%;
+  font-size: 80%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const TopicDone = styled.p`
+  font-size: 200%;
+  font-weight: bold;
+`;
+
+const TopicName = styled.p`
+  font-size: 180%;
+  margin: 10px 0;
+`;
+
+const CloseWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+Modal.setAppElement('#root');
+
 const Abstraksi = () => {
+  // MODAL
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const [color1, setColor1] = useState('#009d86');
   const [color2, setColor2] = useState('#009d86');
   const [color3, setColor3] = useState('#009d86');
@@ -117,23 +204,24 @@ const Abstraksi = () => {
     bgColor4 === '#dbf6f6' ? setBgColor4('#009d86') : setBgColor4('#dbf6f6');
   };
 
-  const [result, setResult] = useState(`
-/** Your test output will go here **/
-`);
+  const [run, setRun] = useState(0);
+  const [answerDefault, setAnswerDefault] = useState('block');
+  const [answerFalse, setAnswerFalse] = useState('none');
+  const [answerTrue, setAnswerTrue] = useState('none');
 
-  const [colorAnswer, setColorAnswer] = useState('#3D3D3D');
   const runClick = () => {
-    setResult(`
-    // output: jawaban Anda sudah benar
-    `);
-    setColorAnswer('#39A14A');
-  };
-
-  const falseClick = () => {
-    setResult(`
-    // output: jawaban Anda masih belum benar
-    `);
-    setColorAnswer('#F44336');
+    setRun(run + 1);
+    setAnswerDefault('none');
+    console.log(run);
+    if (run >= 2) {
+      // setModalForm(true);
+      setAnswerTrue('block');
+      setAnswerFalse('none');
+    } else {
+      // setModalForm(false);
+      setAnswerFalse('block');
+      setAnswerTrue('none');
+    }
   };
 
   return (
@@ -188,21 +276,60 @@ const Abstraksi = () => {
         </CheckboxWrapper>
         <ButtonWrapper>
           <Button onClick={runClick}>RUN</Button>
-          <p onClick={falseClick}>run</p>
         </ButtonWrapper>
       </AnswerSection>
       <ResultSection>
         <SubTopic>Hasil</SubTopic>
-        <BoxResult>
-          <CodeText color={colorAnswer}>{result}</CodeText>
+        <BoxResult style={{ display: `${answerDefault}` }}>
+          <CodeResult style={{ color: '#39A14A' }}>
+            /= Your test output will go here =/
+          </CodeResult>
+        </BoxResult>
+        <BoxResult style={{ display: `${answerTrue}` }}>
+          <CodeResult>/== result ==/</CodeResult>
+          <CodeResult style={{ color: '#39A14A' }}>
+            tests completed, your answer is correct
+          </CodeResult>
+        </BoxResult>
+        <BoxResult style={{ display: `${answerFalse}`, color: '#F44336' }}>
+          <CodeResult>/== result ==/</CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>
+            sorry, your answer is wrong
+          </CodeResult>
         </BoxResult>
         <ButtonWrapper>
-          <Button>SUBMIT</Button>
+          <Button onClick={openModal}>SUBMIT</Button>
           <NavComponent>
-            <span>Pengenalan Pola</span> | <span>Abstraksi</span>
+            <Link to="/quiz-dekomposisi" className="link">
+              Dekomposisi
+            </Link>{' '}
+            |{' '}
+            <Link to="/quiz-pola" className="link">
+              Pengenalan Pola
+            </Link>
           </NavComponent>
         </ButtonWrapper>
       </ResultSection>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Materi selesai"
+      >
+        <CloseWrapper>
+          <ModalClose onClick={closeModal}>X</ModalClose>
+        </CloseWrapper>
+        <ModalBox>
+          <TopicDone>Selamat! Jawaban Anda benar</TopicDone>
+          <img src={check} alt="completed" />
+          <NextWrapper>
+            <TopicName>Kerjakan Komponen CT lainnya</TopicName>
+          </NextWrapper>
+          <Link to="/quiz">
+            <Button width="200px">Kembali ke Komponen Kuis</Button>
+          </Link>
+        </ModalBox>
+      </Modal>
     </MainWrapper>
   );
 };

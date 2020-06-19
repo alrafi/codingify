@@ -43,6 +43,6 @@ export const TextHighlight = styled.p`
 export const SubTitle = styled.p`
   font-weight: bold;
   margin-bottom: 15px;
-  font-size: 80%;
-  margin-top: 10px;
+  font-size: 85%;
+  margin-top: 20px;
 `;

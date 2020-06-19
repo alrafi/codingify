@@ -27,6 +27,10 @@ const QuizItem = styled.div`
   padding: 0 20px;
   margin-bottom: 10px;
   color: #009d86;
+
+  &:hover {
+    background-color: #b6fbfb;
+  }
 `;
 
 const QuizHead = styled.div`

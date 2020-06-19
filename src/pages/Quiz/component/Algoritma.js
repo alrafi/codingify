@@ -16,7 +16,6 @@ import { SubTopic } from '../../../components/contentComponent';
 import check from '../../../assets/check.png';
 import rightArrow from '../../../assets/right-arrow.png';
 import adaptive from '../../../assets/adaptive.png';
-import { TextHighlight } from '../../../components/contentComponent';
 import { Link } from 'react-router-dom';
 import leftArrow from '../../../assets/left-arrow.png';
 
@@ -164,6 +163,31 @@ const CloseWrapper = styled.div`
   justify-content: flex-end;
 `;
 
+const ChooseLanguage = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-left: 20px;
+
+  select {
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #009d86;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  p {
+    font-size: 80%;
+    margin-right: 15px;
+  }
+`;
+
 const ModalClose = styled.div`
   width: 20px;
   height: 20px;
@@ -229,6 +253,14 @@ const rotasiMatriks = (m, n, matriks) => {
     setIsOpen(false);
   };
 
+  const [language, setLanguage] = useState('javascript');
+
+  const handleLanguage = (event) => {
+    // console.log(language);
+    setLanguage(event.target.value);
+    // console.log(event.target.value);
+  };
+
   return (
     <MainWrapper>
       <MenuBar />
@@ -242,17 +274,25 @@ const rotasiMatriks = (m, n, matriks) => {
         </SubWrapper>
         <Text>
           Silahkan tulis <span>Algoritma</span> yang tepat untuk persoalan di
-          samping menggunakan sintaks <TextHighlight>JavaScript</TextHighlight>{' '}
-          yang sudah dipelajari.
+          samping.
         </Text>
+        <ChooseLanguage>
+          <p>Pilih bahasa: </p>
+          <select value={language} onChange={handleLanguage}>
+            <option value="javascript">Javascript</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="csharp">C#</option>
+          </select>
+        </ChooseLanguage>
         <AceEditor
-          mode="javascript"
+          mode={language}
           theme="tomorrow"
           onChange={onChange}
           name="UNIQUE_ID_OF_DIV"
           editorProps={{ $blockScrolling: true }}
           width="100%"
-          height="320px"
+          height="300px"
           fontSize={16}
           showGutter={true}
           highlightActiveLine={true}

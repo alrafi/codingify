@@ -33,6 +33,10 @@ const TopicItem = styled.div`
   padding: 0 20px;
   margin-bottom: 10px;
 
+  &:hover {
+    background-color: #b6fbfb;
+  }
+
   .iconTopic {
     width: 40px;
     height: 40px;
