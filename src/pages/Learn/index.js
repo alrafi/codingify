@@ -76,10 +76,6 @@ const Back = styled.p`
   }
 `;
 
-const onChange = (newValue) => {
-  console.log('change', newValue);
-};
-
 // MODAL
 const customStyles = {
   content: {
@@ -121,6 +117,35 @@ const CloseWrapper = styled.div`
   justify-content: flex-end;
 `;
 
+const ChooseLanguage = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  select {
+    width: 120px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #009d86;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  p {
+    font-size: 80%;
+    margin-right: 15px;
+  }
+`;
+
+const Padding = styled.div`
+  padding: 0 20px;
+`;
+
+// MODAL
 const ModalClose = styled.div`
   width: 20px;
   height: 20px;
@@ -136,7 +161,16 @@ const ModalClose = styled.div`
 
 Modal.setAppElement('#root');
 
+// funstion app
 const Learn = () => {
+  const [language, setLanguage] = useState('javascript');
+
+  const handleLanguage = (event) => {
+    // console.log(language);
+    setLanguage(event.target.value);
+    // console.log(event.target.value);
+  };
+
   const [result, setResult] = useState(`
 /** Your test output will go here **/
 `);
@@ -167,6 +201,17 @@ const Learn = () => {
     setColorAnswer('#F44336');
   };
 
+  const [code, setCode] = useState(`// setup
+let myArr = [];
+
+// only change code below this line
+`);
+
+  const onCodeChange = (newValue) => {
+    // console.log('change', newValue);
+    setCode(newValue);
+  };
+
   return (
     <MainWrapper>
       <MenuBar />
@@ -177,7 +222,6 @@ const Learn = () => {
             <Back>(back to List Topics)</Back>
           </Link>
         </SubWrapper>
-
         <SubTopic>Perkenalan</SubTopic>
         <Text>
           Array merupakan variabel dengan satu nama, tetapi mengandung banyak
@@ -222,22 +266,32 @@ const Learn = () => {
       </ConceptSection>
       <CodeSection>
         <TitleEditor>Online Editor</TitleEditor>
+        <Padding>
+          <Text>
+            Silahkan kerjakan latihan konsep pada code editor di bawah ini.
+          </Text>
+          <ChooseLanguage>
+            <p>Pilih bahasa: </p>
+            <select value={language} onChange={handleLanguage}>
+              <option value="javascript">Javascript</option>
+              <option value="java">Java</option>
+              <option value="python">Python</option>
+              <option value="csharp">C#</option>
+            </select>
+          </ChooseLanguage>
+        </Padding>
         <AceEditor
-          mode="javascript"
+          mode={language}
           theme="tomorrow"
-          onChange={onChange}
+          onChange={onCodeChange}
           name="UNIQUE_ID_OF_DIV"
           editorProps={{ $blockScrolling: true }}
           width="100%"
-          height="400px"
+          height="300px"
           fontSize={16}
           showGutter={true}
           highlightActiveLine={true}
-          value={`// setup
-let myArr = [];
-
-// only change code below this line
-`}
+          value={code}
           setOptions={{
             enableBasicAutocompletion: true,
             enableLiveAutocompletion: true,
