@@ -29,6 +29,8 @@ import Modal from 'react-modal';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
 
+import leftArrow from '../../assets/left-arrow.png';
+
 const MainWrapper = styled.div`
   background-color: #f6f4fc;
   position: relative;
@@ -60,10 +62,16 @@ const BoxResult = styled.div`
 
 const SubWrapper = styled.div`
   display: flex;
+  align-items: center;
 
   .link {
     color: #303030;
     text-decoration: none;
+  }
+
+  img {
+    /* margin-top: -3px; */
+    margin-right: 10px;
   }
 `;
 
@@ -145,6 +153,18 @@ const Padding = styled.div`
   padding: 0 20px;
 `;
 
+const ScoreResult = styled.p`
+  font-size: 120%;
+  font-weight: bold;
+  margin-top: 20px;
+`;
+
+const CodeResult = styled.p`
+  font-family: 'Fira Code', monospace;
+  font-size: 90%;
+  color: ${({ color }) => (color ? color : '#3d3d3d')};
+`;
+
 // MODAL
 const ModalClose = styled.div`
   width: 20px;
@@ -185,22 +205,6 @@ const Learn = () => {
     setIsOpen(false);
   };
 
-  const [colorAnswer, setColorAnswer] = useState('#3D3D3D');
-
-  const runClick = () => {
-    setResult(`
-    // running tests, tests completed
-    `);
-    setColorAnswer('#39A14A');
-  };
-
-  const falseClick = () => {
-    setResult(`
-    // output: jawaban Anda masih belum benar
-    `);
-    setColorAnswer('#F44336');
-  };
-
   const [code, setCode] = useState(`// setup
 let myArr = [];
 
@@ -212,15 +216,35 @@ let myArr = [];
     setCode(newValue);
   };
 
+  const [run, setRun] = useState(0);
+  const [answerDefault, setAnswerDefault] = useState('block');
+  const [answerFalse, setAnswerFalse] = useState('none');
+  const [answerTrue, setAnswerTrue] = useState('none');
+
+  const runClick = () => {
+    setRun(run + 1);
+    setAnswerDefault('none');
+    console.log(run);
+    if (run >= 2) {
+      // setModalForm(true);
+      setAnswerTrue('block');
+      setAnswerFalse('none');
+    } else {
+      // setModalForm(false);
+      setAnswerFalse('block');
+      setAnswerTrue('none');
+    }
+  };
+
   return (
     <MainWrapper>
       <MenuBar />
       <ConceptSection>
         <SubWrapper>
-          <Topic>Array</Topic>
-          <Link to="/learn-topics" className="link">
-            <Back>(back to List Topics)</Back>
+          <Link to="/quiz-list" className="link">
+            <img src={leftArrow} alt="back" />
           </Link>
+          <Topic>Array</Topic>
         </SubWrapper>
         <SubTopic>Perkenalan</SubTopic>
         <Text>
@@ -302,13 +326,29 @@ let myArr = [];
         />
         <ButtonWrapper>
           <Button onClick={runClick}>RUN</Button>
-          <p onClick={falseClick}>run</p>
         </ButtonWrapper>
       </CodeSection>
       <ConsoleSection>
         <SubTopic>Live Console</SubTopic>
-        <BoxResult>
+        {/* <BoxResult>
           <CodeText color={colorAnswer}>{result}</CodeText>
+        </BoxResult> */}
+        <BoxResult style={{ display: `${answerDefault}` }}>
+          <CodeResult style={{ color: '#39A14A' }}>
+            /= Your test output will go here =/
+          </CodeResult>
+        </BoxResult>
+        <BoxResult style={{ display: `${answerTrue}` }}>
+          <CodeResult>/== result ==/</CodeResult>
+          <CodeResult style={{ color: '#39A14A' }}>
+            tests completed, your answer is correct
+          </CodeResult>
+        </BoxResult>
+        <BoxResult style={{ display: `${answerFalse}`, color: '#F44336' }}>
+          <CodeResult>/== result ==/</CodeResult>
+          <CodeResult style={{ color: '#F44336' }}>
+            sorry, your answer is wrong
+          </CodeResult>
         </BoxResult>
         <ButtonWrapper>
           <Button onClick={openModal}>SUBMIT</Button>
