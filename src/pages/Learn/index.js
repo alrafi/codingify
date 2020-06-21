@@ -78,17 +78,7 @@ const SubWrapper = styled.div`
   }
 
   img {
-    /* margin-top: -3px; */
     margin-right: 10px;
-  }
-`;
-
-const Back = styled.p`
-  font-size: 60%;
-  color: #303030;
-  margin: 2px 0 0 10px;
-  &:hover {
-    color: #009d86;
   }
 `;
 
@@ -159,12 +149,6 @@ const ChooseLanguage = styled.div`
 
 const Padding = styled.div`
   padding: 0 20px;
-`;
-
-const ScoreResult = styled.p`
-  font-size: 120%;
-  font-weight: bold;
-  margin-top: 20px;
 `;
 
 const CodeResult = styled.p`
@@ -379,10 +363,22 @@ let myArr = [];
     setIsOpenCTp(false);
   };
 
-  const [ctAnswer, setCTAnswer] = useState('Silahkan submit jawaban');
+  const [ctAnswerA, setCTAnswerA] = useState('Silahkan submit jawaban');
 
-  const onCTsubmit = () => {
-    setCTAnswer('Jawaban anda tepat!');
+  const onCTsubmitA = () => {
+    setCTAnswerA('Jawaban anda tepat!');
+  };
+
+  const [ctAnswerD, setCTAnswerD] = useState('Silahkan submit jawaban');
+
+  const onCTsubmitD = () => {
+    setCTAnswerD('Jawaban anda tepat!');
+  };
+
+  const [ctAnswerP, setCTAnswerP] = useState('Silahkan submit jawaban');
+
+  const onCTsubmitP = () => {
+    setCTAnswerP('Jawaban anda tepat!');
   };
 
   return (
@@ -530,8 +526,13 @@ let myArr = [];
           <TopicDone>Materi Selesai</TopicDone>
           <img src={check} alt="completed" />
           <TopicName>Array - Perkenalan</TopicName>
+          <Link to="/learn">
+            <Button width="200px">Materi selanjutnya</Button>
+          </Link>
           <Link to="/quiz">
-            <Button width="200px">Lanjut Mengerjakan Kuis</Button>
+            <Button width="200px" color="#FF175D">
+              Lanjut Mengerjakan Kuis
+            </Button>
           </Link>
         </ModalBox>
       </Modal>
@@ -581,13 +582,13 @@ let myArr = [];
               <p>array mempunyai nilai</p>
             </CheckboxItem>
           </CheckboxWrapper>
-          <Button width="200px" onClick={onCTsubmit}>
+          <Button width="200px" onClick={onCTsubmitA}>
             Submit jawaban
           </Button>
           <SubmitWrapper>
             <img src={ilustrasiA} alt="abstraksi" className="ilustrasiA" />
           </SubmitWrapper>
-          <TextCT>{ctAnswer}</TextCT>
+          <TextCT>{ctAnswerA}</TextCT>
         </ModalBox>
       </Modal>
       {/* Modal dekomposisi */}
@@ -637,13 +638,13 @@ let myArr = [];
             </CheckboxItem>
           </CheckboxWrapper>
 
-          <Button width="200px" onClick={onCTsubmit}>
+          <Button width="200px" onClick={onCTsubmitD}>
             Submit jawaban
           </Button>
           <SubmitWrapper>
             <img src={ilustrasiD} alt="dekomposisi" className="ilustrasiD" />
           </SubmitWrapper>
-          <TextCT>{ctAnswer}</TextCT>
+          <TextCT>{ctAnswerD}</TextCT>
         </ModalBox>
       </Modal>
       {/* Modal Pola */}
@@ -693,13 +694,13 @@ let myArr = [];
             </CheckboxItem>
           </CheckboxWrapper>
 
-          <Button width="200px" onClick={onCTsubmit}>
+          <Button width="200px" onClick={onCTsubmitP}>
             Submit jawaban
           </Button>
           <SubmitWrapper>
             <img src={ilustrasiP} alt="dekomposisi" className="ilustrasiP" />
           </SubmitWrapper>
-          <TextCT>{ctAnswer}</TextCT>
+          <TextCT>{ctAnswerP}</TextCT>
         </ModalBox>
       </Modal>
     </MainWrapper>
