@@ -16,22 +16,13 @@ import {
   TextHighlight,
   SubTitle,
 } from '../../components/contentComponent';
-
 import MenuBar from '../../components/MenuBar';
-import video from '../../assets/video.mp4';
 import check from '../../assets/check.png';
-
 import AceEditor from 'react-ace';
-import { Player } from 'video-react';
-import '../../../node_modules/video-react/dist/video-react.css';
 import Modal from 'react-modal';
-
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
-
 import leftArrow from '../../assets/left-arrow.png';
-// import rightArrow from '../../assets/right-arrow.png';
-// import ct from '../../assets/ct.png';
 import ctabstraksi from '../../assets/ctabstraksi.png';
 import ctdekomposisi from '../../assets/ctdekomposisi.png';
 import ctpola from '../../assets/ctpola.png';
@@ -423,9 +414,15 @@ let myArr = [];
           Untuk mengenal konsep array lebih jelas, silahkan menonton video
           perkenalan array di bawah ini.
         </Text>
-        <Player>
-          <source src={video} />
-        </Player>
+        <iframe
+          width="100%"
+          height="250"
+          src="https://www.youtube.com/embed/6hfOvs8pY1k"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullscreen
+          title="algorithm"
+        ></iframe>
         <SubTitle>Komponen Computational Thinking</SubTitle>
         <Text>Silahkan klik dan kerjakan komponen CT di bawah ini</Text>
         <CTcontainer>
